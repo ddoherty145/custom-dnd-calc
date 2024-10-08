@@ -20,6 +20,10 @@ label.custom_checkbox_label{
     padding-left:10px;
 }
 
+a{
+    color: pink;
+}
+
 div{
     display:block;
 }
@@ -115,7 +119,7 @@ div#pointtotals label{
     text-align:right;
 }
 
-td.race_mod{
+td.ancestry_mod{
     min-width:30px;
 }
 
@@ -137,7 +141,7 @@ th.operator{
 }
 
 table#pointbuy td.stat_total{
-    color: lightgreen;
+    color: rgb(0, 255, 0);
     font-weight: bold;
     font-size: 135%;
     border: 1px dotted lightgrey;
