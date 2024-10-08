@@ -1,0 +1,151 @@
+body{
+    color:aquamarine;
+    background-color: grey;
+    display:block;
+    font-family:fantasy;
+    margin:0px auto;
+    max-width: 400px;
+}
+
+h2{
+    margin-bottom:5px;
+    margin-top:5px;
+}
+
+input.custom_checkbox{
+    padding-right: 10px;
+}
+
+label.custom_checkbox_label{
+    padding-left:10px;
+}
+
+div{
+    display:block;
+}
+
+div#ancestry label{
+    font-weight:bold;
+}
+
+button.upper{
+    float:right;
+    width:24px;
+    height:24px;
+    padding:0px;
+    background-image:url('arrowup.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+button.downer{
+    float:right;
+    width:24px;
+    height:24px;
+    padding:0px;
+    background-image: url('arrowdown.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+button.bonus{
+    width:24px;
+    height:24px;
+    padding:0px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+button.one{
+    background-image: url('arrowdown.png');
+}
+
+button.one:before{
+    content:'+1';
+}
+
+button.two:before{
+    content:'+2';
+    background-image:url('arrowdown.png');
+}
+
+button.bonus.pressed{
+    background-color: salmon;
+    color:white;
+    background-image: url('arrowup.png');
+}
+
+span.base{
+    color:darkred
+}
+
+div#contentwrapper{
+    text-align:center;
+}
+
+div#content{
+    padding:10px;
+    background-color: darkcyan;
+    background-color: black;
+}
+
+.hidden{
+    display:none;
+}
+
+h3#custom_header{
+    margin:0px;
+    padding:0px;
+}
+
+div#custom_checkboxes{
+    margin:5px;
+    padding:5px;
+    border-top: 1px dotted lightgray;
+    border-bottom: 1px dotted lightgrey;
+}
+
+div#pointstotals{
+    text-align: right;
+    padding-bottom: 10px;
+}
+
+div#pointtotals label{
+    font-weight:bold;
+    text-align:right;
+}
+
+td.race_mod{
+    min-width:30px;
+}
+
+table#pointbuy{
+    margin:0px auto;
+}
+
+table#pointbuy td{
+    text-align: center;
+    padding:2px;
+}
+
+th.operator{
+    display:none;
+}
+
+th.operator{
+    display:none;
+}
+
+table#pointbuy td.stat_total{
+    color: lightgreen;
+    font-weight: bold;
+    font-size: 135%;
+    border: 1px dotted lightgrey;
+}
+
+table#pointbuy td.stat_base{
+    min-width:80px;
+    font-weight: bold;
+    font-size: 135%;
+    border: 1px dotted white;
+}
