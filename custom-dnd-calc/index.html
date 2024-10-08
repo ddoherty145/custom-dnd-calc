@@ -3,9 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="pintbuy.css">
     <title>Dungeons and Dragons Point By Calculator</title>
 </head>
 <body>
-    
+<div id="contentwrapper">
+<div id="content">
+    <h2>Attribute Point Buy Calculator</h2>
+    <form id="form-point-buy-calc">
+        <div id="ancestry">
+            <label>Ancestry Type:</label>
+            <select id="ancestry_dropdown">
+                <option value="flex">Flex (+1,+2 or +1x3)</option>
+                <option value="dwarfMountain">Dwarf, Mountain (+2,+2)</option>
+                <option value="halfElf">Half-Elf (+1,+1,+2)</option>
+                <option value="human">Human (+1 all)</option>
+                <option value="humanVariant">Human, Variant (+1,+1)</option>
+                <option value="triton">Triton (+1,+1,+1)</option>
+                <option value="other">Other (+1,+2)</option>
+            </select>
+        </div>
+
+        <table id="pointbuy">
+            <tr class="attribute-headers">
+                <th></th>
+                <th>Base</th>
+                <th></th>
+                <th class="operator"></th>
+                <th>Final<br>Score</th>
+                <th></th>
+                <th>Mod</th>
+                <th></th>
+                <th>Cost</th>
+            </tr>
+            <tr id="str" class="attribute-row">
+                <th>STR</th>
+                <td class="stat_base">
+                <span id="base_str" class="base"></span>
+                <button id="up_str" class="upper changer"></button>
+                <button id="down_str" class="downer changer"></button>
+                </td>
+                <td class="bonuses">
+                <button id="one_str" class="bonus one"></button>
+                <button id="two_str" class="bonus two"></button>
+                </td>
+                <td class="operator"></td>
+                <td class="stat_total"><span id="total_str"></span></td>
+                <td>&nbsp;</td>
+                <td><span is="modifier_str"></span></td>
+                <td>&nbsp;</td>
+                <td><span id="cost_str" class="cost_span"></span></td>
+            </tr>
+            <tr id="dex" class="attribute-row">
+                <th>DEX</th>
+                <td class="stat_base">
+                <span id="base_dex" class="base"></span>
+                <button id="up_dex" class="upper changer"></button>
+                <button id="down_dex" class="downer changer"></button>
+                </td>
+                <td class="bonuses">
+                <button id="one_dex" class="bonus one"></button>
+                <button id="two_dex" class="bonus two"></button>
+                </td>
+                <td class="operator"></td>
+                <td class="stat_total"><span id="total_dex"></span></td>
+                <td>&nbsp;</td>
+                <td><span is="modifier_dex"></span></td>
+                <td>&nbsp;</td>
+                <td><span id="cost_dex" class="cost_span"></span></td>
+            </tr>
+            <tr id="con" class="attribute-row">
+                <th>CON</th>
+                <td class="stat_base">
+                <span id="base_con" class="base"></span>
+                <button id="up_con" class="upper changer"></button>
+                <button id="down_con" class="downer changer"></button>
+                </td>
+                <td class="bonuses">
+                <button id="one_con" class="bonus one"></button>
+                <button id="two_con" class="bonus two"></button>
+                </td>
+                <td class="operator"></td>
+                <td class="stat_total"><span id="total_con"></span></td>
+                <td>&nbsp;</td>
+                <td><span is="modifier_con"></span></td>
+                <td>&nbsp;</td>
+                <td><span id="cost_con" class="cost_span"></span></td>
+            </tr>
+            <tr id="int" class="attribute-row">
+                <th>INT</th>
+                <td class="stat_base">
+                <span id="base_int" class="base"></span>
+                <button id="up_int" class="upper changer"></button>
+                <button id="down_int" class="downer changer"></button>
+                </td>
+                <td class="bonuses">
+                <button id="one_int" class="bonus one"></button>
+                <button id="two_int" class="bonus two"></button>
+                </td>
+                <td class="operator"></td>
+                <td class="stat_total"><span id="total_int"></span></td>
+                <td>&nbsp;</td>
+                <td><span is="modifier_int"></span></td>
+                <td>&nbsp;</td>
+                <td><span id="cost_int" class="cost_span"></span></td>
+            </tr>
+            <tr id="wis" class="attribute-row">
+                <th>WIS</th>
+                <td class="stat_base">
+                <span id="base_wis" class="base"></span>
+                <button id="up_wis" class="upper changer"></button>
+                <button id="down_wis" class="downer changer"></button>
+                </td>
+                <td class="bonuses">
+                <button id="one_wis" class="bonus one"></button>
+                <button id="two_wis" class="bonus two"></button>
+                </td>
+                <td class="operator"></td>
+                <td class="stat_total"><span id="total_wis"></span></td>
+                <td>&nbsp;</td>
+                <td><span is="modifier_wis"></span></td>
+                <td>&nbsp;</td>
+                <td><span id="cost_wis" class="cost_span"></span></td>
+            </tr>
+            <tr id="cha" class="attribute-row">
+                <th>CHA</th>
+                <td class="stat_base">
+                <span id="base_cha" class="base"></span>
+                <button id="up_cha" class="upper changer"></button>
+                <button id="down_cha" class="downer changer"></button>
+                </td>
+                <td class="bonuses">
+                <button id="one_cha" class="bonus one"></button>
+                <button id="two_cha" class="bonus two"></button>
+                </td>
+                <td class="operator"></td>
+                <td class="stat_total"><span id="total_cha"></span></td>
+                <td>&nbsp;</td>
+                <td><span is="modifier_cha"></span></td>
+                <td>&nbsp;</td>
+                <td><span id="cost_cha" class="cost_span"></span></td>
+            </tr>
+            <tr>
+                <td colspan="10">
+                    <br>
+                    <div id="pointstotals">
+                        <label>Total Points: </label><span id="points-total">27</span><br>
+                        <label>Available Points: </label><span id="points-available"></span><br>
+                        <label>Used Points: </label><span id="points-used"></span>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <br>
+    <p>
+        <ul style="text-align: left;">
+            <li>
+                Choose your ancestry type. Then push +1/+2 buttons to give yourself your desired bonuses.
+            </li>
+            <li>
+                Push the up and down arrows to spend points on improving stats.
+            </li>
+            <li>
+                New ancestries tend to be 'Flex' where you can have "+1 to 3 stats" or "+1 to 1 and +2 to another."
+            </li>
+            <li>
+                Traditional ancestries tend to be 'Other' where you have +1 to one and +2 to another.
+            </li>
+            <li>
+                Half-elves, tritons, mountain dwarves, humans and variant humans are the exceptions.
+            </li>
+        </ul>
+    </p>
+    </div>
+    </div>
+    <script src=""></script>
 </body>
 </html>
