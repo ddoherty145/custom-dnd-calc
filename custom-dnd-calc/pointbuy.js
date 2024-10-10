@@ -1,12 +1,127 @@
 var HEROES = {};
 
+// Initialize base values for all attributes
+let baseStats = {
+    str: 8,
+    dex: 8,
+    con: 8,
+    int: 8,
+    wis: 8,
+    cha: 8
+};
+
+document.getElementById("base_str").innerHTML = baseStats.str;
+document.getElementById("base_dex").innerHTML = baseStats.dex;
+document.getElementById("base_con").innerHTML = baseStats.con;
+document.getElementById("base_int").innerHTML = baseStats.int;
+document.getElementById("base_wis").innerHTML = baseStats.wis;
+document.getElementById("base_cha").innerHTML = baseStats.cha;
+
+document.getElementById("cost_str").innerHTML = calculateCost(baseStats.str);
+document.getElementById("cost_dex").innerHTML = calculateCost(baseStats.dex);
+document.getElementById("cost_con").innerHTML = calculateCost(baseStats.con);
+document.getElementById("cost_int").innerHTML = calculateCost(baseStats.int);
+document.getElementById("cost_wis").innerHTML = calculateCost(baseStats.wis);
+document.getElementById("cost_cha").innerHTML = calculateCost(baseStats.cha);
+
+
+// Function to update the displayed base values
+function updateBaseValues() {
+    for (let stat in baseStats) {
+        document.getElementById('base_' + stat).textContent = baseStats[stat];
+        updateTotalStat(stat); // Update the final score and modifier
+    }
+}
+
+// Function to update the total stat
+function updateTotalStat(stat) {
+    let baseValue = baseStats[stat];
+    let bonusValue = getBonusValue(stat); 
+    let total = baseValue + bonusValue;
+
+    document.getElementById('total_' + stat).textContent = total;
+
+    
+    let modifier = Math.floor((total - 10) / 2);  
+    document.querySelector(`[is="modifier_${stat}"]`).textContent = modifier;
+}
+
+
+function getBonusValue(stat) {
+    let oneBonus = document.getElementById('one_' + stat).classList.contains('pressed') ? 1 : 0;
+    let twoBonus = document.getElementById('two_' + stat).classList.contains('pressed') ? 2 : 0;
+    return oneBonus + twoBonus;
+}
+
+function calculateCost(stat) {
+    let cost = 0;
+    if (stat >= 8 && stat <= 13) cost = stat - 8;
+    else if (stat >= 14 && stat <= 15) cost = (stat - 13) * 2 + 5;
+    return cost;
+}
+
+function calculateModifier(stat) {
+    return Math.floor((stat - 10) / 2);
+}
+
+// Event listeners for the +1 and +2 buttons
+document.querySelectorAll('.bonus.one').forEach(button => {
+    button.addEventListener('click', function() {
+        let stat = this.id.split('_')[1];
+        this.classList.toggle('pressed'); // Toggle the pressed state
+        updateTotalStat(stat); // Recalculate the total
+    });
+});
+
+document.querySelectorAll('.bonus.two').forEach(button => {
+    button.addEventListener('click', function() {
+        let stat = this.id.split('_')[1];
+        this.classList.toggle('pressed'); // Toggle the pressed state
+        updateTotalStat(stat); // Recalculate the total
+    });
+});
+
+document.querySelectorAll('.upper').forEach(button => {
+    button.addEventListener('click', function() {
+        let stat = this.id.split('_')[1];
+        baseStats[stat]++;
+        updateBaseValues(); 
+    });
+});
+
+document.querySelectorAll('.downer').forEach(button => {
+    button.addEventListener('click', function() {
+        let stat = this.id.split('_')[1];
+        baseStats[stat]--;
+        updateBaseValues(); I
+    });
+});
+
+document.getElementById("two_str").addEventListener("click", function() {
+    baseStats.str += 2;
+    updateStatsDisplay();
+});
+
+function updatePointsSpent() {
+    let totalSpent = calculateCost(baseStats.str) + calculateCost(baseStats.dex) + 
+                     calculateCost(baseStats.con) + calculateCost(baseStats.int) + 
+                     calculateCost(baseStats.wis) + calculateCost(baseStats.cha);
+    document.getElementById("points-used").innerHTML = totalSpent;
+    document.getElementById("points-available").innerHTML = 27 - totalSpent;
+}
+
+
+
+updateBaseValues();
+
+
 HEROES.pointbuyer = (function (){
     var pointsTotal = 27;
     var pointUsed = 0;
     var stats=["str","dex","con","int","wis","cha"];
     var costs = {"8": 0,"9": 1,"10": 2,"11": 3,"12": 4,"13": 5,"14": 7,"15": 9};
     var modifiers = {"8": -1,"9": -1,"10": 0,"11": 0,"12": 1,"13": 1,"14": 2,"15": 2,"16": 3,"17":3,"18":4}
-    var starting_base = {str: 8, dex: 8, con: 8, wis: 8, int: 8, cha: 8};
+    var starting_base = {str: 8, dex: 8, con: 8, int: 8, wis: 8, cha: 8};
     var current_base = {str: 0, dex: 0, con: 0, wis: 0, int: 0, cha: 0};
     var current_bonus = {str: 0, dex: 0, con: 0, wis: 0, int: 0, cha: 0};
     var total_bonus = 0;
