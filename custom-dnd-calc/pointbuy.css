@@ -61,7 +61,7 @@ button.bonus{
 }
 
 button.one{
-    background-image: url('arrowdown.png');
+    background-image: url('');
 }
 
 button.one:before{
@@ -70,13 +70,13 @@ button.one:before{
 
 button.two:before{
     content:'+2';
-    background-image:url('arrowdown.png');
+    background-image:url('');
 }
 
 button.bonus.pressed{
     background-color: salmon;
     color:white;
-    background-image: url('arrowup.png');
+    background-image: url('');
 }
 
 span.base{
